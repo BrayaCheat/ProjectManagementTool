@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-3 border-none flex flex-col gap-3">
+  <Card class="border-none flex flex-col gap-3">
     <div class="flex items-center justify-between">
       <p>{{projectName}}</p>
       <span class="text-muted-foreground">#{{ projectId }}</span>
