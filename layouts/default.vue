@@ -1,0 +1,70 @@
+<template>
+  <div id="root" class="sm:w-[430px] w-full mx-auto h-screen flex flex-col justify-between">
+    <NavBar />
+
+    <main class="flex-1 overflow-y-auto overflow-x-hidden p-3">
+      <NuxtPage />
+      <Toaster />
+    </main>
+
+    <footer class="p-6 flex items-center justify-between relative">
+      <NuxtLink v-for="item in bottomBars" :key="item.label" :to="item.path"
+        class="text-muted-foreground flex flex-col items-center" :class="[
+          isActiveRoute(item.path) && 'text-primary',
+          item.path === '/task' && 'bg-primary text-white rounded-full p-3'
+        ]">
+        <component :is="item.icon" class="size-6" />
+        <span class="text-[12px]">{{ item.label }}</span>
+      </NuxtLink>
+    </footer>
+  </div>
+</template>
+
+<script setup>
+import { Toaster } from 'vue-sonner';
+import { FileStack, FileText, Group, Home, Plus, Settings, User, Users } from 'lucide-vue-next';
+import NavBar from '~/components/common/navBar.vue';
+
+//state
+const bottomBars = reactive([
+  {
+    label: 'Home',
+    icon: Home,
+    path: '/',
+  },
+  {
+    label: 'Project',
+    icon: FileText,
+    path: '/project',
+  },
+  {
+    label: '',
+    icon: Plus,
+    path: '/task'
+  },
+  {
+    label: 'Team',
+    icon: Users,
+    path: '/team',
+  },
+  {
+    label: 'Setting',
+    icon: Settings,
+    path: '/setting',
+  }
+])
+const route = useRoute()
+
+//computed
+// const userName = computed(() => userStore.user?.email.split('@')[0] || '')
+const isActiveRoute = (path) => route.path === path || false
+</script>
+
+<style scoped>
+/* #root {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#000000 0.5px, #fff 0.5px);
+  background-size: 10px 10px;
+} */
+</style>

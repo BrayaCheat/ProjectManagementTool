@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Task {
+  id            String         @id @default(uuid()) // UUID for ID
+  userId        String // References Supabase user ID
+  categoryId    String? // Nullable as tasks might not belong to a category
+  title         String
+  description   String?
+  priority      Int
+  dueDate       DateTime?
+  status        String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  category      Category?      @relation(fields: [categoryId], references: [id])
+  collaborators Collaborator[] // Many-to-many relationship with Collaborator
+  comments      Comment[] // One-to-many relationship with Comment
+  notifications Notification[] // One-to-many relationship with Notification
+
+  @@index([userId])
+  @@index([categoryId])
+  @@index([dueDate])
+}
+
+model Project {
+  id         String     @id @default(uuid())
+  name       String
+  categories Category[] // One-to-many relationship with Category
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Category {
+  id        String   @id @default(uuid()) // UUID for ID
+  name      String
+  color     String
+  tasks     Task[] // One-to-many relationship with Task
+  projectId String // Foreign key to Project
+  project   Project  @relation(fields: [projectId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+  @@index([projectId])
+}
+
+model Collaborator {
+  taskId             String // Foreign key to Task
+  collaboratorUserId String // References Supabase user ID
+  role               String
+  addedAt            DateTime @default(now())
+  task               Task     @relation(fields: [taskId], references: [id])
+
+  @@id([taskId, collaboratorUserId]) // Composite primary key
+  @@index([collaboratorUserId])
+}
+
+model Comment {
+  id        String   @id @default(uuid()) // UUID for ID
+  taskId    String // Foreign key to Task
+  userId    String // References Supabase user ID
+  content   String
+  createdAt DateTime @default(now())
+  task      Task     @relation(fields: [taskId], references: [id])
+
+  @@index([taskId])
+  @@index([userId])
+}
+
+model Notification {
+  id         String   @id @default(uuid()) // UUID for ID
+  userId     String // References Supabase user ID
+  taskId     String // Foreign key to Task
+  message    String
+  readStatus Boolean  @default(false)
+  sentAt     DateTime @default(now())
+  task       Task     @relation(fields: [taskId], references: [id])
+
+  @@index([userId])
+  @@index([taskId])
+}
