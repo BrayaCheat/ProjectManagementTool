@@ -25,6 +25,10 @@ export default defineNuxtConfig({
   },
 
   app: {
+    pageTransition: {
+      mode: 'out-in',
+      name: 'page'
+    },
     head: {
       link: [
         { rel: "preconnect", href: "https://fonts.googleapis.com" },

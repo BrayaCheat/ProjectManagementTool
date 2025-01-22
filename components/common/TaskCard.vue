@@ -1,8 +1,8 @@
 <template>
   <Card class="p-3 flex flex-col gap-3 relative">
     <div class="flex items-center text-muted-foreground text-[14px] gap-3">
-      <p>#{{ taskId }}</p>
       <p>{{ taskName }}</p>
+      <p>#{{ taskId }}</p>
     </div>
     <div class="flex items-center text-muted-foreground text-[12px]">
       <component :is="Calendar" class="size-3.5" />
@@ -10,11 +10,14 @@
       <span class="mx-1">-</span>
       <span>{{ taskDueDate }}</span>
     </div>
-    <div class="flex items-center text-muted-foreground text-[12px]">
-      <ul>
-        <li>Assign to: demo</li>
+    <!-- <div class="flex items-center text-muted-foreground text-[12px]">
+      <ul class="list-disc">
+        <span>Collaborator</span>
+        <li v-for="user in taskCollaborator" :key="user.id" class="ml-3">
+          {{ user.role }}
+        </li>
       </ul>
-    </div>
+    </div> -->
     <Badge :data="taskStatus" />
     <TaskModal :data="task"/>
   </Card>
@@ -40,4 +43,5 @@ const taskName = computed(() => props.data?.title || 'Unknown title')
 const taskDate = computed(() => new Date(props.data?.createdAt).toLocaleDateString() || 'Unknown date')
 const taskDueDate = computed(() => new Date(props.data?.dueDate).toLocaleDateString() || 'Unknown due date')
 const taskStatus = computed(() => props.data?.status || 'Unknown status')
+const taskCollaborator = computed(() => props.data?.collaborators || [])
 </script>

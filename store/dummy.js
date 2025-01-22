@@ -38,6 +38,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T14:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task1",
+                      userId: "user1",
+                      role: "UX/UI Designer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task2",
@@ -58,6 +66,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T15:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task2",
+                      userId: "user2",
+                      role: "UX/UI Designer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -86,6 +102,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T16:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task3",
+                      userId: "user3",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task4",
@@ -106,6 +130,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-23T14:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task4",
+                      userId: "user2",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -140,6 +172,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T17:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task5",
+                      userId: "user1",
+                      role: "Content Creator",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task6",
@@ -160,6 +200,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T18:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task6",
+                      userId: "user3",
+                      role: "Content Creator",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -187,6 +235,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-23T13:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task7",
+                      userId: "user2",
+                      role: "IT Support",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task8",
@@ -206,6 +262,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-23T16:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task8",
+                      userId: "user3",
+                      role: "IT Support",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -240,6 +304,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-24T12:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task9",
+                      userId: "user1",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task10",
@@ -260,6 +332,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-24T13:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task10",
+                      userId: "user3",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -287,6 +367,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-24T14:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task11",
+                      userId: "user2",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task12",
@@ -307,6 +395,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-24T15:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task12",
+                      userId: "user3",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -340,6 +436,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-16T11:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task13",
+                      userId: "user4",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task14",
@@ -360,6 +464,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-16T14:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task14",
+                      userId: "user5",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -387,6 +499,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-14T17:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task15",
+                      userId: "user6",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task16",
@@ -406,6 +526,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-19T12:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task16",
+                      userId: "user7",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -439,6 +567,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-21T11:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task17",
+                      userId: "user8",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task18",
@@ -458,6 +594,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-22T14:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task18",
+                      userId: "user9",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },
@@ -484,6 +628,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-23T11:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task19",
+                      userId: "user10",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
                 {
                   id: "task20",
@@ -504,6 +656,14 @@ export const useDummyStore = defineStore(
                       createdAt: "2025-01-25T11:00:00Z",
                     },
                   ],
+                  collaborators: [
+                    {
+                      taskId: "task20",
+                      userId: "user8",
+                      role: "Developer",
+                      createdAt: "2025-01-21T14:00:00Z",
+                    }
+                  ]
                 },
               ],
             },

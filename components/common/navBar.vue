@@ -12,9 +12,7 @@
       <span class="ms-3 text-muted-foreground">{{ userName }}</span>
     </div>
     <div v-else class="flex flex-1 items-center">
-      <Button @click="onGoBack">
-        <component :is="ChevronLeft" class="size-5" />
-      </Button>
+      <component @click="onGoBack" :is="ChevronLeft" class="size-6 cursor-pointer" />
       <Breadcrumb class="flex-1 flex items-center justify-center">
         <BreadcrumbList>
           <BreadcrumbItem>

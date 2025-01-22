@@ -34,33 +34,4 @@ const props = defineProps({
 const projectName = computed(() => props.data?.name || '')
 const projectGroup = computed(() => props.data?.categories || [])
 const projectPath = computed(() => `/project/${props.data?.id}`)
-
-console.log("Project card: ", props.data)
-
-//function
-const mapIcon = (status) => {
-  switch (status) {
-    case 'completed':
-      return ClipboardCheck
-    case 'in-progress':
-      return Clock
-    case 'pending':
-      return ChartSpline
-    default:
-      return ''
-  }
-}
-
-const mapColor = (status) => {
-  switch (status) {
-    case 'completed':
-      return 'text-green-500'
-    case 'in-progress':
-      return 'text-blue-500'
-    case 'pending':
-      return 'text-yellow-500'
-    default:
-      return ''
-  }
-}
 </script>

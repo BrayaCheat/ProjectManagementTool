@@ -61,10 +61,14 @@ const isActiveRoute = (path) => route.path === path || false
 </script>
 
 <style scoped>
-/* #root {
-  background-color: #e5e5f7;
-  opacity: 0.8;
-  background-image: radial-gradient(#000000 0.5px, #fff 0.5px);
-  background-size: 10px 10px;
-} */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
 </style>

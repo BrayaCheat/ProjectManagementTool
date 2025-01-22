@@ -4,6 +4,7 @@
       <div class="flex items-center gap-3">
         <Tag :color="groupColor"/>
         <p>{{ groupName }}</p>
+        <span class="text-muted-foreground">#{{ groupId }}</span>
       </div>
       <Button size="sm" class="text-[12px]" :style="{background: groupColor}">
         Add Task

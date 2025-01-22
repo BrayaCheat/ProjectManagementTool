@@ -22,8 +22,13 @@
             <span>{{ modalDueDate }}</span>
             <span>{{ daysLeft }}</span>
           </div>
-          <p>Priority: <span :class="mapPriorityColor(modalPriority)">{{ priority(modalPriority) }}</span></p>
-          <p>Assign to: demo</p>
+          <p>Priority: <span :class="priorityColor(modalPriority)">{{ priority(modalPriority) }}</span></p>
+          <ul class="list-disc">
+            <span>Collaborator</span>
+            <li v-for="user in modalCollaborators" :key="user.id" class="ml-3">
+              {{ user.role }}
+            </li>
+          </ul>
         </DialogDescription>
 
         <Separator />
@@ -44,9 +49,8 @@
 </template>
 
 <script setup>
-import { Calendar } from 'lucide-vue-next';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '~/components/ui/dialog';
-import { priority } from '~/utils/helper.js';
+import { priorityColor, priority } from '~/utils/helper.js';
 import Badge from './Badge.vue';
 import { Separator } from '../ui/separator';
 import { Textarea } from '../ui/textarea';
@@ -75,25 +79,5 @@ const daysLeft = computed(() => {
   return daysLeft > 0 ? `(${daysLeft} days left)` : 0; // Ensure daysLeft is not negative
 });
 const modalComments = computed(() => props.data?.comments || [])
-
-console.log(modalComments.value)
-
-
-//function
-const mapPriorityColor = (val) => {
-  switch (val) {
-    case 1:
-      return 'text-red-500'
-    case 2:
-      return 'text-yellow-500'
-    case 3:
-      return 'text-green-500'
-    default:
-      return 'text-inherit'
-  }
-}
-
-console.log(props.data)
+const modalCollaborators = computed(() => props.data?.collaborators || [])
 </script>
-
-<style lang="scss" scoped></style>
