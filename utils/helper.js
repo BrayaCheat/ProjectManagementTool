@@ -1,5 +1,9 @@
 import { File, FileCode, FileCheck } from "lucide-vue-next";
 
+export const priorityList = ['Low', 'Medium', 'High']
+
+export const statusList = ['COMPLETED', 'PENDING', 'IN PROGRESS']
+
 export const priority = (val) => {
   switch (val) {
     case 1:

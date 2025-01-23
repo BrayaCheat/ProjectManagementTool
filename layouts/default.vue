@@ -15,7 +15,7 @@
         ]">
         <component :is="item.icon" class="size-6" />
         <span class="text-[12px]">{{ item.label }}</span>
-        <div v-show="isActiveRoute(item.path)" class="absolute w-10 top-0 h-1 bg-primary duration-300"/>
+        <div v-if="isActiveRoute(item.path)" class="absolute w-10 top-3 h-[2px] bg-primary duration-1000"/>
       </NuxtLink>
     </footer>
   </div>

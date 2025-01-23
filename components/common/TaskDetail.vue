@@ -85,4 +85,8 @@ const daysLeft = computed(() => {
 });
 const modalComments = computed(() => props.data?.comments || [])
 const modalCollaborators = computed(() => props.data?.collaborators || [])
+
+defineExpose({
+  daysLeft
+})
 </script>

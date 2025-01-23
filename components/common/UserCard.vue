@@ -25,6 +25,4 @@
   const user = computed(() => props.data || {})
   const userName = computed(() => props.data?.name || '')
   const userRole = computed(() => props.data?.role || '')
-
-  console.log("User data: ", user.value)
 </script>

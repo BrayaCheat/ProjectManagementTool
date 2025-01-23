@@ -9,26 +9,23 @@
       <span>{{ taskDate }}</span>
       <span class="mx-1">-</span>
       <span>{{ taskDueDate }}</span>
+      <div class="flex items-center gap-1 ml-6 text-destructive">
+        <component :is="Clock" class="size-4" />
+        <span>{{ daysLeft }}</span>
+      </div>
     </div>
-    <!-- <div class="flex items-center text-muted-foreground text-[12px]">
-      <ul class="list-disc">
-        <span>Collaborator</span>
-        <li v-for="user in taskCollaborator" :key="user.id" class="ml-3">
-          {{ user.role }}
-        </li>
-      </ul>
-    </div> -->
     <Badge :data="taskStatus" />
-    <TaskDetail :data="task" />
+    <TaskDetail :data="task" ref="taskDetail" />
   </Card>
 </template>
 
 <script setup>
-import { Calendar } from 'lucide-vue-next';
+import { Calendar, Clock } from 'lucide-vue-next';
 import Card from '../ui/card/Card.vue';
 import Badge from './Badge.vue';
 import TaskDetail from './TaskDetail.vue';
 
+//state
 const props = defineProps({
   data: {
     type: Object,
@@ -36,12 +33,15 @@ const props = defineProps({
     default: {}
   }
 })
+//listen to expose from child
+const taskDetail = ref(null)
 
+//computed
+const daysLeft = computed(() => taskDetail.value?.daysLeft || '')
 const task = computed(() => props.data || {})
 const taskId = computed(() => props.data?.id || 'Unknown id')
 const taskName = computed(() => props.data?.title || 'Unknown title')
 const taskDate = computed(() => new Date(props.data?.createdAt).toLocaleDateString() || 'Unknown date')
 const taskDueDate = computed(() => new Date(props.data?.dueDate).toLocaleDateString() || 'Unknown due date')
 const taskStatus = computed(() => props.data?.status || 'Unknown status')
-const taskCollaborator = computed(() => props.data?.collaborators || [])
 </script>
