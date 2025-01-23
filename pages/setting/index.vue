@@ -1,3 +1,3 @@
 <template>
-  setting
+  <div>setting</div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div :style="{background: color}" class="p-1.5 rounded"/>
+  <div :style="{background: color}" class="p-1.5 rounded-full"/>
 </template>
 
 <script setup>

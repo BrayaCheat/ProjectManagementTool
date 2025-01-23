@@ -1,3 +1,5 @@
+import { File, FileCode, FileCheck } from "lucide-vue-next";
+
 export const priority = (val) => {
   switch (val) {
     case 1:
@@ -14,11 +16,24 @@ export const priority = (val) => {
 export const statusColor = (val) => {
   switch (val) {
     case "COMPLETED":
-      return "text-green-500";
+      return "text-green-500 border-green-500 bg-green-50";
     case "PENDING":
-      return "text-yellow-500";
+      return "text-yellow-500 border-yellow-500 bg-yellow-50";
     case "IN PROGRESS":
-      return "text-blue-500";
+      return "text-blue-500 border-blue-500 bg-blue-50";
+    default:
+      return "";
+  }
+};
+
+export const statusIcon = (val) => {
+  switch (val) {
+    case "COMPLETED":
+      return FileCheck;
+    case "PENDING":
+      return File;
+    case "IN PROGRESS":
+      return FileCode;
     default:
       return "";
   }

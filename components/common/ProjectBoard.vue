@@ -1,19 +1,20 @@
 <template>
-  <Card class="border-none flex flex-col gap-3">
+  <Card class="border-none flex flex-col gap-3 h-full">
     <div class="flex items-center justify-between">
-      <p>{{projectName}}</p>
-      <span class="text-muted-foreground">#{{ projectId }}</span>
+      <ProjectHeader :data="projectName" />
+      <GroupForm/>
     </div>
-    <GroupBoard
-      v-for="group in project.categories"
-      :data="group"
-    />
+    <GroupBoard v-if="project.categories.length"  v-for="group in project.categories" :data="group"/>
+    <GroupNotFound v-else/>
   </Card>
 </template>
 
 <script setup>
 import Card from '../ui/card/Card.vue';
 import GroupBoard from './GroupBoard.vue';
+import ProjectHeader from './ProjectHeader.vue';
+import GroupNotFound from './GroupNotFound.vue';
+import GroupForm from './GroupForm.vue';
 
 const props = defineProps({
   data: {
@@ -24,7 +25,9 @@ const props = defineProps({
 })
 
 //computed
-const projectName = computed(() => props.data[0]?.name)
-const projectId = computed(() => props.data[0]?.id)
-const project = computed(() => props.data[0] || [])
+const projectName = computed(() => props.data?.name)
+const projectId = computed(() => props.data?.id)
+const project = computed(() => props.data || {})
+
+console.log("project: ", project.value)
 </script>

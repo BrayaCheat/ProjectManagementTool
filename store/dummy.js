@@ -4,6 +4,18 @@ export const useDummyStore = defineStore(
     const dummy = ref({
       projects: [
         {
+          id: "projectTest",
+          name: "projectTest",
+          categories: [
+            {
+              id: "categorytest",
+              name: "categorytest",
+              color: "#24252a",
+              tasks: [],
+            },
+          ],
+        },
+        {
           id: "project1",
           name: "Website Redesign",
           categories: [
@@ -44,8 +56,8 @@ export const useDummyStore = defineStore(
                       userId: "user1",
                       role: "UX/UI Designer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task2",
@@ -72,8 +84,8 @@ export const useDummyStore = defineStore(
                       userId: "user2",
                       role: "UX/UI Designer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -108,8 +120,8 @@ export const useDummyStore = defineStore(
                       userId: "user3",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task4",
@@ -136,8 +148,8 @@ export const useDummyStore = defineStore(
                       userId: "user2",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -178,8 +190,8 @@ export const useDummyStore = defineStore(
                       userId: "user1",
                       role: "Content Creator",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task6",
@@ -206,8 +218,8 @@ export const useDummyStore = defineStore(
                       userId: "user3",
                       role: "Content Creator",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -241,8 +253,8 @@ export const useDummyStore = defineStore(
                       userId: "user2",
                       role: "IT Support",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task8",
@@ -268,8 +280,8 @@ export const useDummyStore = defineStore(
                       userId: "user3",
                       role: "IT Support",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -310,8 +322,8 @@ export const useDummyStore = defineStore(
                       userId: "user1",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task10",
@@ -338,8 +350,8 @@ export const useDummyStore = defineStore(
                       userId: "user3",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -373,8 +385,8 @@ export const useDummyStore = defineStore(
                       userId: "user2",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task12",
@@ -401,8 +413,8 @@ export const useDummyStore = defineStore(
                       userId: "user3",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -442,8 +454,8 @@ export const useDummyStore = defineStore(
                       userId: "user4",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task14",
@@ -470,8 +482,8 @@ export const useDummyStore = defineStore(
                       userId: "user5",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -505,8 +517,8 @@ export const useDummyStore = defineStore(
                       userId: "user6",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task16",
@@ -532,8 +544,8 @@ export const useDummyStore = defineStore(
                       userId: "user7",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -573,8 +585,8 @@ export const useDummyStore = defineStore(
                       userId: "user8",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task18",
@@ -600,8 +612,8 @@ export const useDummyStore = defineStore(
                       userId: "user9",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -634,8 +646,8 @@ export const useDummyStore = defineStore(
                       userId: "user10",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
                 {
                   id: "task20",
@@ -662,8 +674,8 @@ export const useDummyStore = defineStore(
                       userId: "user8",
                       role: "Developer",
                       createdAt: "2025-01-21T14:00:00Z",
-                    }
-                  ]
+                    },
+                  ],
                 },
               ],
             },
@@ -672,9 +684,193 @@ export const useDummyStore = defineStore(
       ],
     });
 
+    const users = ref([
+      {
+        id: 1,
+        userId: "",
+        name: "Alice Smith",
+        role: "Software Engineer",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 2,
+        userId: "",
+        name: "Bob Johnson",
+        role: "Marketing Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 3,
+        userId: "",
+        name: "Charlie Williams",
+        role: "Sales Director",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 4,
+        userId: "",
+        name: "David Brown",
+        role: "Customer Success Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 5,
+        userId: "",
+        name: "Emily Jones",
+        role: "Product Designer",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 6,
+        userId: "",
+        name: "Finn Miller",
+        role: "Software Developer",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 7,
+        userId: "",
+        name: "Grace Garcia",
+        role: "Content Marketing Specialist",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 8,
+        userId: "",
+        name: "Henry Moore",
+        role: "Business Development Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 9,
+        userId: "",
+        name: "Isabella Hernandez",
+        role: "UX/UI Designer",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 10,
+        userId: "",
+        name: "Jack Wilson",
+        role: "Data Analyst",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 11,
+        userId: "",
+        name: "Karen Davis",
+        role: "Project Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 12,
+        userId: "",
+        name: "Larry Martinez",
+        role: "IT Support Specialist",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 13,
+        userId: "",
+        name: "Michelle Rodriguez",
+        role: "HR Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 14,
+        userId: "",
+        name: "Nathan Anderson",
+        role: "Financial Analyst",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 15,
+        userId: "",
+        name: "Olivia Taylor",
+        role: "Social Media Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 16,
+        userId: "",
+        name: "Patrick Clark",
+        role: "Account Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 17,
+        userId: "",
+        name: "Quinn Lewis",
+        role: "UX Researcher",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 18,
+        userId: "",
+        name: "Rachel Young",
+        role: "Graphic Designer",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 19,
+        userId: "",
+        name: "Samuel Scott",
+        role: "Operations Manager",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+      {
+        id: 20,
+        userId: "",
+        name: "Tanya Adams",
+        role: "Legal Advisor",
+        avatar: "[invalid URL removed]",
+        createdAt: "2023-01-01T00:00:00.000Z",
+        updatedAt: "2023-01-01T00:00:00.000Z",
+      },
+    ]);
+
     return {
       //state
       dummy,
+      users
     };
   },
   { persist: true }

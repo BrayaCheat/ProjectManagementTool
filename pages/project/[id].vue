@@ -17,5 +17,5 @@ const route = useRoute()
 const { id } = route.params
 
 //computed
-const projectDetail = computed(() => dummyStore.dummy?.projects?.filter(project => project?.id === id) || [])
+const projectDetail = computed(() => dummyStore.dummy?.projects?.find(project => project?.id === id) || [])
 </script>

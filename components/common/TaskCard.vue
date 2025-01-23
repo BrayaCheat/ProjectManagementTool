@@ -1,5 +1,5 @@
 <template>
-  <Card class="p-3 flex flex-col gap-3 relative">
+  <Card class="p-3 flex flex-col gap-3 relative" tabindex="-1">
     <div class="flex items-center text-muted-foreground text-[14px] gap-3">
       <p>{{ taskName }}</p>
       <p>#{{ taskId }}</p>
@@ -19,7 +19,7 @@
       </ul>
     </div> -->
     <Badge :data="taskStatus" />
-    <TaskModal :data="task"/>
+    <TaskDetail :data="task" />
   </Card>
 </template>
 
@@ -27,7 +27,7 @@
 import { Calendar } from 'lucide-vue-next';
 import Card from '../ui/card/Card.vue';
 import Badge from './Badge.vue';
-import TaskModal from './TaskModal.vue';
+import TaskDetail from './TaskDetail.vue';
 
 const props = defineProps({
   data: {

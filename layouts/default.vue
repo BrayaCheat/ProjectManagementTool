@@ -15,6 +15,7 @@
         ]">
         <component :is="item.icon" class="size-6" />
         <span class="text-[12px]">{{ item.label }}</span>
+        <div v-show="isActiveRoute(item.path)" class="absolute w-10 top-0 h-1 bg-primary duration-300"/>
       </NuxtLink>
     </footer>
   </div>
@@ -23,7 +24,7 @@
 <script setup>
 import { Toaster } from 'vue-sonner';
 import { FileStack, FileText, Group, Home, Plus, Settings, User, Users } from 'lucide-vue-next';
-import NavBar from '~/components/common/navBar.vue';
+import NavBar from '~/components/common/NavBar.vue';
 
 //state
 const bottomBars = reactive([
@@ -37,11 +38,11 @@ const bottomBars = reactive([
     icon: FileText,
     path: '/project',
   },
-  {
-    label: '',
-    icon: Plus,
-    path: '/task'
-  },
+  // {
+  //   label: '',
+  //   icon: Plus,
+  //   path: '/task'
+  // },
   {
     label: 'Team',
     icon: Users,

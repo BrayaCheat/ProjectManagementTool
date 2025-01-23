@@ -32,9 +32,9 @@ const props = defineProps({
 })
 
 //computed
-const groupColor = computed(() => props.data?.color || '#fff')
-const groupName = computed(() => props.data?.name || 'Unknown Group')
-const totalTask = computed(() => props.data?.tasks.length || [])
+const groupColor = computed(() => props.data?.color || '')
+const groupName = computed(() => props.data?.name || '')
+const totalTask = computed(() => props.data?.tasks.length || 1)
 const taskLeft = computed(() => props.data?.tasks?.filter(item => item.status !== 'completed').length || 0)
 const taskDisplay = computed(() => taskLeft === 0 ? '✅' : taskLeft)
 </script>

@@ -1,25 +1,30 @@
 <template>
   <div>
-    <Card class="flex flex-col gap-3 text-[14px] text-muted-foreground">
-      <div class="flex items-center">
-        <component :is="User"/>
-        <span>{{ user }}. User {{ (user + 1) * 2 }}</span>
+    <Card class="flex flex-col gap-3 text-[14px] text-muted-foreground p-3">
+      <div class="flex items-center gap-3">
+        <Avatar/>
+        <div class="flex flex-col">
+          <span class="text-[12px] text-muted-foreground">{{ userRole }}</span>
+          <span class="text-primary">{{ userName }}</span>
+        </div>
       </div>
-      <span>Join date: {{ new Date().toLocaleDateString() }}</span>
     </Card>
   </div>
 </template>
 
 <script setup>
-  import { User } from 'lucide-vue-next';
   import { Card } from '../ui/card';
+  import { Avatar } from '../ui/avatar';
 
   const props = defineProps({
     data: {
-      type: Number,
-      default: 0,
+      type: Object,
       required: true
     }
   })
-  const user = computed(() => props.data || 0)
+  const user = computed(() => props.data || {})
+  const userName = computed(() => props.data?.name || '')
+  const userRole = computed(() => props.data?.role || '')
+
+  console.log("User data: ", user.value)
 </script>

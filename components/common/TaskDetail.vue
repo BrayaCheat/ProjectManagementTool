@@ -18,9 +18,13 @@
           <div class="flex items-center gap-1">
             <p>Deadline:</p>
             <span>{{ modalDate }}</span>
-            <span class="mx-1">-</span>
+            <span>-</span>
             <span>{{ modalDueDate }}</span>
-            <span>{{ daysLeft }}</span>
+
+            <div class="flex items-center gap-1 ml-6 text-destructive">
+              <component :is="Clock" class="size-4"/>
+              <span>{{ daysLeft }}</span>
+            </div>
           </div>
           <p>Priority: <span :class="priorityColor(modalPriority)">{{ priority(modalPriority) }}</span></p>
           <ul class="list-disc">
@@ -54,6 +58,7 @@ import { priorityColor, priority } from '~/utils/helper.js';
 import Badge from './Badge.vue';
 import { Separator } from '../ui/separator';
 import { Textarea } from '../ui/textarea';
+import { Clock } from 'lucide-vue-next';
 
 const props = defineProps({
   data: {
@@ -76,7 +81,7 @@ const daysLeft = computed(() => {
   const dueDate = new Date(props.data.dueDate);
   const timeDifference = dueDate - currentDate;
   const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24)); // Convert milliseconds to days
-  return daysLeft > 0 ? `(${daysLeft} days left)` : 0; // Ensure daysLeft is not negative
+  return daysLeft > 0 ? `${daysLeft} days left` : 0; // Ensure daysLeft is not negative
 });
 const modalComments = computed(() => props.data?.comments || [])
 const modalCollaborators = computed(() => props.data?.collaborators || [])

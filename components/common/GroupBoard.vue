@@ -4,17 +4,17 @@
       <div class="flex items-center gap-3">
         <Tag :color="groupColor"/>
         <p>{{ groupName }}</p>
-        <span class="text-muted-foreground">#{{ groupId }}</span>
+        <!-- <span class="text-muted-foreground">#{{ groupId }}</span> -->
       </div>
-      <Button size="sm" class="text-[12px]" :style="{background: groupColor}">
-        Add Task
-      </Button>
+      <TaskForm :color="groupColor"/>
     </div>
     <TaskCard
+      v-if="haveTask"
       v-for="task in group.tasks"
       :key="task.id"
       :data="task"
     />
+    <TaskNotFound v-else/>
   </Card>
 </template>
 
@@ -22,6 +22,8 @@
 import Card from '../ui/card/Card.vue';
 import TaskCard from './TaskCard.vue';
 import Tag from './Tag.vue';
+import TaskForm from './TaskForm.vue';
+import TaskNotFound from './TaskNotFound.vue';
 
 const props = defineProps({
   data: {
@@ -48,6 +50,19 @@ const withOpacity = (hexColor, opacity) => {
 
 const backgroundWithOpacity = computed(() => withOpacity(groupColor.value, 0.2));
 const gradientBackground = computed(() => `linear-gradient(310deg, ${backgroundWithOpacity.value} 1%, rgba(255, 255, 255, 1) 90%)`);
+const haveTask = computed(() => props.data.tasks.length)
 </script>
 
 <style lang="scss" scoped></style>
+
+
+this model is just a dummy model, generate 20 persons for me
+{
+  id: 1,
+  userId: "" //supabase userId
+  name: "JohnDoe",
+  role: "Developer",
+  avatar: "https://www.dummy.com",
+  createdAt: ""
+  updatedAt: ""
+}
