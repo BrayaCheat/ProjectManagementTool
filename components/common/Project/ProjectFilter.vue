@@ -27,6 +27,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '~/components/ui/select'
 import { Filter } from 'lucide-vue-next';
 </script>

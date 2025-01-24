@@ -13,6 +13,12 @@ export const useDummyStore = defineStore(
               color: "#24252a",
               tasks: [],
             },
+            {
+              id: "categorytest1",
+              name: "categorytest1",
+              color: "#29293e",
+              tasks: [],
+            },
           ],
         },
         {

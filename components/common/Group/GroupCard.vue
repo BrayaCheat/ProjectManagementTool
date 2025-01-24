@@ -4,12 +4,7 @@
       <Tag :color="groupColor" />
       <p>{{ groupName }}</p>
     </div>
-    <Progress
-        class="h-2 rotate-180"
-        :model-value="taskLeft"
-        :max="totalTask"
-        :style="{background: groupColor}"
-    />
+    <Progress class="h-2 rotate-180" :model-value="taskLeft" :max="totalTask" :style="{ background: groupColor }" />
     <!-- <div :class="`${taskLeft !== 0 ? 'text-primary' : 'text-green-500'} text-[14px]`">
       {{ taskDisplay }}
     </div> -->
@@ -17,10 +12,9 @@
 </template>
 
 <script setup>
-import { Inbox } from 'lucide-vue-next';
-import { Card } from '../ui/card';
-import Tag from './Tag.vue';
-import { Progress } from '../ui/progress';
+import { Card } from '../../ui/card';
+import Tag from '../Tag.vue';
+import { Progress } from '../../ui/progress';
 
 //state
 const props = defineProps({

@@ -22,7 +22,7 @@
             <span>{{ modalDueDate }}</span>
 
             <div class="flex items-center gap-1 ml-6 text-destructive">
-              <component :is="Clock" class="size-4"/>
+              <component :is="Clock" class="size-4" />
               <span>{{ daysLeft }}</span>
             </div>
           </div>
@@ -53,11 +53,11 @@
 </template>
 
 <script setup>
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '~/components/ui/dialog';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '../../ui/dialog';
 import { priorityColor, priority } from '~/utils/helper.js';
-import Badge from './Badge.vue';
-import { Separator } from '../ui/separator';
-import { Textarea } from '../ui/textarea';
+import Badge from '../Badge.vue';
+import { Separator } from '../../ui/separator';
+import { Textarea } from '../../ui/textarea';
 import { Clock } from 'lucide-vue-next';
 
 const props = defineProps({

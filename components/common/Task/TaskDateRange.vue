@@ -3,9 +3,9 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Button } from '../ui/button'
-import { Calendar } from '@/components/ui/v-calendar'
+} from '../../ui/popover'
+import { Button } from '../../ui/button'
+import { Calendar } from '../../ui/v-calendar'
 import { cn } from '@/lib/utils'
 import { format, differenceInDays } from 'date-fns'
 import { Calendar as CalendarIcon, Clock } from 'lucide-vue-next'

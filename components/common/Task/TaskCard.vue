@@ -21,8 +21,8 @@
 
 <script setup>
 import { Calendar, Clock } from 'lucide-vue-next';
-import Card from '../ui/card/Card.vue';
-import Badge from './Badge.vue';
+import { Card } from '../../ui/card';
+import Badge from '../Badge.vue';
 import TaskDetail from './TaskDetail.vue';
 
 //state

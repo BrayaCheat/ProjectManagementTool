@@ -1,21 +1,25 @@
 <template>
   <div>
     <ProjectBoard
+      v-if="projectDetail"
       :data="projectDetail"
     />
+    <div v-else>
+      debug
+    </div>
   </div>
 
 </template>
 
 <script setup>
-import { useDummyStore } from '~/store/dummy';
-import ProjectBoard from '~/components/common/ProjectBoard.vue';
+import ProjectBoard from '../../components/common/Project/ProjectBoard.vue';
+import { useProjectStore } from '~/store/project';
 
 //state
-const dummyStore = useDummyStore()
+const projectStore = useProjectStore()
 const route = useRoute()
 const { id } = route.params
 
 //computed
-const projectDetail = computed(() => dummyStore.dummy?.projects?.find(project => project?.id === id) || [])
+const projectDetail = computed(() => projectStore.projects?.find(project => project?.id === id) || [])
 </script>

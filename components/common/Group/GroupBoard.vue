@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import Card from '../ui/card/Card.vue';
-import TaskCard from './TaskCard.vue';
-import Tag from './Tag.vue';
-import TaskForm from './TaskForm.vue';
-import TaskNotFound from './TaskNotFound.vue';
+import Card from '../../ui/card';
+import TaskCard from '../Task/TaskCard.vue';
+import Tag from '../Tag.vue';
+import TaskForm from '../Task/TaskForm.vue';
+import TaskNotFound from '../Task/TaskNotFound.vue';
 
 const props = defineProps({
   data: {
@@ -49,20 +49,6 @@ const withOpacity = (hexColor, opacity) => {
 };
 
 const backgroundWithOpacity = computed(() => withOpacity(groupColor.value, 0.2));
-const gradientBackground = computed(() => `linear-gradient(310deg, ${backgroundWithOpacity.value} 1%, rgba(255, 255, 255, 1) 90%)`);
+const gradientBackground = computed(() => `linear-gradient(160deg, ${backgroundWithOpacity.value} 1%, rgba(255, 255, 255, 1) 50%)`);
 const haveTask = computed(() => props.data.tasks.length)
 </script>
-
-<style lang="scss" scoped></style>
-
-
-this model is just a dummy model, generate 20 persons for me
-{
-  id: 1,
-  userId: "" //supabase userId
-  name: "JohnDoe",
-  role: "Developer",
-  avatar: "https://www.dummy.com",
-  createdAt: ""
-  updatedAt: ""
-}
