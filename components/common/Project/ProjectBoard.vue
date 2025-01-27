@@ -12,7 +12,7 @@
         <GroupNotFound v-else />
       </div>
       <div v-else-if="isActiveComponent === 'setting'" :key="'setting'">
-        <ProjectSetting :data="project" />
+        <ProjectSetting :data="project"/>
       </div>
     </Transition>
 

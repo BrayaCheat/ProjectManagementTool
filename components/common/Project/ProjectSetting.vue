@@ -4,9 +4,17 @@
     <div class="safe-zone flex flex-col gap-3">
       <h1>Rename Project</h1>
       <Card class="p-3 flex flex-col gap-3">
-        <Input :placeholder="placeholder" v-model.trim.lazy="projectForm.name" />
-        <Button size="sm" variant="outline" :disabled="!projectForm.name.length">
-          Rename
+        <Input
+          :placeholder="projectName"
+          v-model.trim.lazy="projectForm.name"
+          :disabled="isLoading" required
+          type="text"
+          class="text-[16px]"
+          tabindex="-1"
+        />
+        <Button size="sm" variant="outline" :disabled="isLoading || !projectForm.name.length" @click="onRenameProject">
+          <span>Rename</span>
+          <component v-if="isLoading" :is="Loader2Icon" class="animate-spin" />
         </Button>
       </Card>
     </div>
@@ -32,11 +40,19 @@
             </Button>
           </DialogTrigger>
           <DialogContent>
-            <DialogTitle>Are you sure you want to delete?</DialogTitle>
+            <DialogTitle>Confirm Deletion</DialogTitle>
             <DialogDescription class="flex flex-col gap-3">
-              <span>Type <span class="text-destructive">"{{ projectName }}"</span> to continue to the delete
-                process.</span>
-              <Input placeholder="" type="text" v-model.trim.lazy="confirmDelete" class="text-[16px]" tabindex="-1" />
+              <span>Are you sure you want to delete <strong class="text-destructive">"{{ projectName }}"</strong>?</span>
+              <span>Type <strong class="text-destructive">"{{ projectName }}"</strong> to confirm.</span>
+              <Input
+                :placeholder="projectName"
+                type="text"
+                v-model.trim.lazy="confirmDelete"
+                class="text-[16px]"
+                tabindex="-1"
+                required
+                :disabled="isLoading"
+              />
             </DialogDescription>
             <Button @click="onDeleteProject" variant="destructive" :disabled="isDeleteDisable || isLoading">
               <span>Confirm</span>
@@ -55,7 +71,6 @@
 import { toast } from 'vue-sonner';
 import Card from '@/components/ui/card/Card.vue';
 import { Input } from '@/components/ui/input';
-import Separator from '@/components/ui/separator/Separator.vue';
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Loader2Icon } from 'lucide-vue-next';
 import { useProjectStore } from '@/store/project';
@@ -74,9 +89,8 @@ const router = useRouter()
 const projectStore = useProjectStore()
 
 //computed
-const placeholder = computed(() => props?.data?.name || '')
 const projectId = computed(() => props?.data?.id || '')
-const projectName = computed(() => props?.data?.name)
+const projectName = computed(() => props?.data?.name || '')
 const isDeleteDisable = computed(() => confirmDelete.value !== projectName.value)
 
 //function
@@ -87,10 +101,29 @@ const onDeleteProject = async () => {
       method: 'DELETE'
     })
     projectStore.removeFromStore(projectId.value)
-    toast(data, { description: data })
+    toast('', { description: data })
+    isLoading.value = false
     router.push('/project')
+  } catch (error) {
+    isLoading.value = false
+    console.error(error)
+    toast('', { description: error })
+  }
+}
+
+const onRenameProject = async () => {
+  try {
+    isLoading.value = true
+    const { message } = await $fetch(`/api/project/${projectId.value}`, {
+      method: 'PUT',
+      body: projectForm
+    })
+    await projectStore.fetchProject()
+    toast('', { description: message })
+    projectForm.name = ''
     isLoading.value = false
   } catch (error) {
+    isLoading.value = false
     console.error(error)
     toast('', { description: error })
   }

@@ -1,4 +1,4 @@
-import { prisma } from "@/server/lib/prisma";
+import { prisma } from "~/server/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
@@ -37,5 +37,7 @@ export default defineEventHandler(async (event) => {
       statusCode: 500,
       statusMessage: "Internal server error",
     });
+  } finally {
+    await prisma.$disconnect()
   }
 });

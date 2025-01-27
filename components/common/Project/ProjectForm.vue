@@ -6,22 +6,54 @@
           <component :is="Plus" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="bottom" class="h-[50%]">
-        <SheetTitle>
-          <Header data="New Project" />
+      <SheetContent side="bottom" class="h-[75%] p-0 border-none" ref="sheet">
+        <SheetTitle class="bg-primary text-secondary px-3 py-6 flex flex-col gap-3">
+          <Label class="text-[20px]">Create new project</Label>
+          <p class="text-muted-foreground text-[14px]/5">
+            This project aims to enhance user experience and streamline business processes with an innovative solution.
+          </p>
         </SheetTitle>
-        <SheetDescription class="flex flex-col gap-3">
+        <SheetDescription class="flex flex-col gap-3 py-6 px-3">
           <Label>Project name</Label>
           <div class="relative">
-            <Input placeholder="E-commerce platform" v-model.trim.lazy="projectForm.name" required="true" tabindex="-1"
-              class="text-[16px]" />
-            <component v-if="projectForm.name.length" :is="X" @click="onClearForm"
-              class="cursor-pointer absolute right-4 top-2.5 size-5" />
+            <Input
+              placeholder="E-commerce platform"
+              v-model.trim.lazy="projectForm.name"
+              required="true"
+              tabindex="-1"
+              class="text-[16px]"
+              :disabled="isLoading"
+            />
+            <component
+              v-if="projectForm.name.length"
+              :is="X"
+              @click="onClearForm"
+              class="cursor-pointer absolute right-4 top-2.5 size-5"
+              :disabled="isLoading"
+            />
           </div>
-          <Button @click.prevent="onSubmitForm" :disabled="isLoading" class="flex items-center mt-6">
-            <span>Save</span>
-            <component v-if="isLoading" :is="Loader2Icon" class="animate-spin size-5" />
-          </Button>
+
+          <div class="h-2">
+            <span v-if="isError" class="text-destructive">{{ isError }}</span>
+          </div>
+
+          <div class="flex flex-col gap-3 mt-3">
+            <Button
+              @click.prevent="onSubmitForm"
+              :disabled="isLoading || !projectForm.name"
+              class="flex items-center px-6"
+            >
+              <span>Save</span>
+              <component v-if="isLoading" :is="Loader2Icon" class="animate-spin size-5" />
+            </Button>
+            <Button
+              variant="none"
+              @click="isSheetOpen = false"
+              :disabled="isLoading"
+            >
+              Cancel
+            </Button>
+          </div>
         </SheetDescription>
       </SheetContent>
     </Sheet>
@@ -34,13 +66,17 @@ import { Sheet, SheetTrigger, SheetTitle, SheetDescription, SheetContent } from 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'vue-sonner';
-import Header from '@/components/common/Header.vue';
+import { Label } from '@/components/ui/label'
+import { onClickOutside } from '@vueuse/core';
+import { useProjectStore } from '~/store/project';
 
 //state
 const projectForm = reactive({ name: '' })
 const isLoading = ref(false)
-const emits = defineEmits(['onSuccess'])
 const isSheetOpen = ref(false)
+const isError = ref(false)
+const sheet = ref(null)
+const projectStore = useProjectStore()
 
 //function
 const onClearForm = () => {
@@ -49,29 +85,44 @@ const onClearForm = () => {
 
 const onSubmitForm = async () => {
   try {
-    isLoading.value = true;
     if (!projectForm.name || projectForm.name.trim() === '') {
-      toast('',{description: 'Please enter a valid project name.'});
+      return toast('', { description: 'Please enter a valid project name.' });
     }
-    const { message, success } = await $fetch('/api/project', {
+    if (projectForm.name.length < 6) {
+      return toast('', { description: 'Project name must be 6 characters above' })
+    }
+    isLoading.value = true;
+    const { message } = await $fetch('/api/project', {
       method: 'POST',
       body: projectForm,
     })
-    if (success) {
-      toast('', { description: message })
-      projectForm.name = ''
-      emits('onSuccess')
-      isLoading.value = false;
-      isSheetOpen.value = false;
-    } else {
-      toast('', { description: message })
-      isLoading.value = false
-    }
+    await projectStore.fetchProject()
+    toast('', { description: message })
+    projectForm.name = ''
+    isLoading.value = false;
+    isSheetOpen.value = false;
   } catch (error) {
-    toast('', { description: error }),
     isLoading.value = false
+    console.error(error)
+    toast('', { description: error })
   }
 };
 
+//watch
+watch(() => projectForm.name, (val) => {
+  if (!val.trim()) {
+    isError.value = 'Project name is required.'
+  }
+  else if (val.length < 6) {
+    isError.value = 'Project name must be at least 6 characters.'
+  }
+  else {
+    isError.value = ''
+  }
+})
 
+//vue use
+onClickOutside(sheet, event => {
+  event?.clientY > 204.75 ? isSheetOpen.value = true : isSheetOpen.value = false
+})
 </script>

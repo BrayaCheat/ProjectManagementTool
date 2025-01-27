@@ -2,36 +2,46 @@ import { prisma } from "~/server/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
+    const { id } = event.context.params;
     const { name } = await readBody(event);
-    if (!name || typeof name !== "string" || name.trim() === "") {
+
+    if (!id) {
       return {
-        message:
-          "Invalid project name: Name is required and must be a non-empty string.",
+        message: "Invalid id",
+        status: 400,
+      };
+    }
+    if (!name) {
+      return {
+        message: "Invalid project name",
         status: 400,
       };
     }
     const findExist = await prisma.project.findFirst({
-      where: { name },
+      where: {
+        id: id,
+      },
     });
-    if (findExist) {
+    if (!findExist) {
       return {
-        message: "Project is already exist.",
+        message: "Project not found",
         status: 400,
       };
     }
-    const data = await prisma.project.create({
+    const updatedProject = await prisma.project.update({
+      where: { id },
       data: { name: name },
     });
     return {
-      message: "Project created.",
-      data: data,
+      data: updatedProject,
+      message: "Project updated",
+      status: 201,
     };
   } catch (error) {
     console.log(error);
     throw createError({
       statusCode: 500,
-      statusMessage: error,
-      success: false,
+      statusMessage: "Internal server error",
     });
   } finally {
     await prisma.$disconnect();

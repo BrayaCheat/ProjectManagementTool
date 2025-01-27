@@ -1,11 +1,11 @@
-import { prisma } from "@/server/lib/prisma";
+import { prisma } from "~/server/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
     const data = await prisma.project.findMany({
       orderBy: {
-        createdAt: 'desc'
-      }
+        createdAt: "desc",
+      },
     });
     return {
       data: data,

@@ -6,7 +6,7 @@
           New Group
         </Button>
       </SheetTrigger>
-      <SheetContent side="bottom" class="h-[50%]">
+      <SheetContent side="bottom" class="h-[75%]">
         <SheetTitle>
           <Header data="New Group" />
         </SheetTitle>
