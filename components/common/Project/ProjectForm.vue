@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Sheet>
+    <Sheet :open="isSheetOpen">
       <SheetTrigger as-child>
-        <Button>
+        <Button @click="isSheetOpen = true">
           <component :is="Plus" />
         </Button>
       </SheetTrigger>
@@ -23,7 +23,6 @@
             <component v-if="isLoading" :is="Loader2Icon" class="animate-spin size-5" />
           </Button>
         </SheetDescription>
-        <SheetClose id="sheetBtn"/>
       </SheetContent>
     </Sheet>
   </div>
@@ -31,16 +30,17 @@
 
 <script setup>
 import { Loader2Icon, Plus, X } from 'lucide-vue-next';
-import { Sheet, SheetTrigger, SheetTitle, SheetDescription, SheetContent, SheetClose } from '../../ui/sheet';
-import { Button } from '../../ui/button';
-import { Input } from '../../ui/input';
+import { Sheet, SheetTrigger, SheetTitle, SheetDescription, SheetContent } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { toast } from 'vue-sonner';
-import Header from '../Header.vue';
+import Header from '@/components/common/Header.vue';
 
 //state
 const projectForm = reactive({ name: '' })
 const isLoading = ref(false)
 const emits = defineEmits(['onSuccess'])
+const isSheetOpen = ref(false)
 
 //function
 const onClearForm = () => {
@@ -62,12 +62,13 @@ const onSubmitForm = async () => {
       projectForm.name = ''
       emits('onSuccess')
       isLoading.value = false;
+      isSheetOpen.value = false;
     } else {
       toast('', { description: message })
       isLoading.value = false
     }
   } catch (error) {
-    toast('', { description: error })
+    toast('', { description: error }),
     isLoading.value = false
   }
 };

@@ -12,7 +12,7 @@
         </li>
       </ul>
       <ul v-else class="text-muted-foreground flex items-center gap-1">
-        <component :is="Inbox" class="size-4"/>
+        <component :is="Inbox" class="size-4" />
         <span class="text-[12px]">No Group yet</span>
       </ul>
     </Card>
@@ -20,9 +20,9 @@
 </template>
 
 <script setup>
-import { Card } from '../../ui/card';
+import { Card } from '@/components/ui/card';
 import { Inbox, Radical } from 'lucide-vue-next';
-import Tag from '../Tag.vue';
+import Tag from '@/components/common/Tag.vue';
 
 //state
 const props = defineProps({

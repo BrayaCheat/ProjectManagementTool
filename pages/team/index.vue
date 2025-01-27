@@ -7,8 +7,8 @@
 </template>
 
 <script setup>
-  import UserCard from '~/components/common/UserCard.vue';
-  import { useDummyStore } from '~/store/dummy';
+  import UserCard from '@/components/common/UserCard.vue';
+  import { useDummyStore } from '@/store/dummy';
 
   const dummyStore = useDummyStore()
 

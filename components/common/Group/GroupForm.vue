@@ -42,8 +42,8 @@
 
 <script setup>
 import { Loader2Icon, X } from 'lucide-vue-next';
-import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle } from '../../ui/sheet';
-import Header from '../Header.vue';
+import { Sheet, SheetTrigger, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
+import Header from '@/components/common/Header.vue';
 
 //state
 const props = defineProps({

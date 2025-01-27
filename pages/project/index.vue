@@ -15,11 +15,11 @@
 </template>
 
 <script setup>
-import ProjectCard from '~/components/common/Project/ProjectCard.vue';
-import ProjectFilter from '~/components/common/Project/ProjectFilter.vue';
-import ProjectForm from '~/components/common/Project/ProjectForm.vue';
-import ProjectSearch from '~/components/common/Project/ProjectSearch.vue';
-import { useProjectStore } from '~/store/project';
+import ProjectCard from '@/components/common/Project/ProjectCard.vue';
+import ProjectFilter from '@/components/common/Project/ProjectFilter.vue';
+import ProjectForm from '@/components/common/Project/ProjectForm.vue';
+import ProjectSearch from '@/components/common/Project/ProjectSearch.vue';
+import { useProjectStore } from '@/store/project';
 
 //state
 const projectStore = useProjectStore()

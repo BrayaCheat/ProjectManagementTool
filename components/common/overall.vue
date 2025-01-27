@@ -11,7 +11,7 @@
           View Task
         </Button>
       </div>
-        <DonutChart index="name" :category="'total'" :data="data" :colors="['white', 'pink']" class="h-[140px] w-fit"/>
+      <DonutChart index="name" :category="'total'" :data="data" :colors="['white', 'pink']" class="h-[140px] w-fit" />
       <!-- <div class="flex flex-col items-start">
         <Button>
           <component :is="Ellipsis" class="size-6" />
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { Card } from '../ui/card';
+import { Card } from '@/components/ui/card';
 import { Ellipsis } from 'lucide-vue-next';
 import { DonutChart } from '@/components/ui/chart-donut'
 

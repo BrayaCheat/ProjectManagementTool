@@ -12,9 +12,9 @@
 </template>
 
 <script setup>
-import { Card } from '../../ui/card';
-import Tag from '../Tag.vue';
-import { Progress } from '../../ui/progress';
+import { Card } from '@/components/ui/card';
+import Tag from '@/components/common/Tag.vue';
+import { Progress } from '@/components/ui/progress';
 
 //state
 const props = defineProps({

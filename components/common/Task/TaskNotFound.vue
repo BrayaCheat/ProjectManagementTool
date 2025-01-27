@@ -17,6 +17,6 @@
 </template>
 
 <script setup>
-import { Card } from '../../ui/card';
+import { Card } from '@/components/ui/card';
 import { FolderPlus } from 'lucide-vue-next';
 </script>

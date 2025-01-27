@@ -16,7 +16,7 @@
 <script setup>
 import { Search, X } from 'lucide-vue-next';
 import { toast } from 'vue-sonner';
-import { Input } from '../../ui/input';
+import { Input } from '@/components/ui/input';
 
 //state
 const searchQuery = ref('')

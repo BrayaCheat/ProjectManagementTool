@@ -17,11 +17,8 @@
         </SheetDescription>
         <Button variant="destructive" @click="onSignOut">
           <span>Sign out</span>
-          <component
-            :is="isLoading ? LoaderCircle : LogOut"
-            :class="`${isLoading ? 'animate-spin' : 'animate-none'}`"
-            :disabled="isLoading"
-          />
+          <component :is="isLoading ? LoaderCircle : LogOut" :class="`${isLoading ? 'animate-spin' : 'animate-none'}`"
+            :disabled="isLoading" />
         </Button>
       </SheetContent>
     </Sheet>
@@ -38,10 +35,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
-import { useUserStore } from '~/store/user';
-import { Button } from '../ui/button';
-import { supabase } from '~/lib/supabase';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useUserStore } from '@/store/user';
+import { Button } from '@/components/ui/button';
+import { supabase } from '@/lib/supabase';
 
 //state
 const isLoading = ref(false)

@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { Button } from '~/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
@@ -27,6 +27,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '~/components/ui/select'
+} from '@/components/ui/select'
 import { Filter } from 'lucide-vue-next';
 </script>

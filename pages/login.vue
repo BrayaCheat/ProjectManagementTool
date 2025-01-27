@@ -33,14 +33,14 @@
 </template>
 
 <script setup>
-import { Label } from '~/components/ui/label';
-import { Input } from '~/components/ui/input';
-import { Button } from '~/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { ChevronRight, Eye, EyeClosed, Loader2, Ban } from 'lucide-vue-next';
-import { Separator } from '~/components/ui/separator';
-import { supabase } from '~/lib/supabase';
+import { Separator } from '@/components/ui/separator';
+import { supabase } from '@/lib/supabase';
 import { toast } from 'vue-sonner'
-import { useUserStore } from '~/store/user';
+import { useUserStore } from '@/store/user';
 
 //meta
 definePageMeta({

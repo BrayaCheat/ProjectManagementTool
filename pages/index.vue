@@ -15,13 +15,13 @@
 </template>
 
 <script setup>
-import NotFound from '~/components/common/notFound.vue';
-import OverallCard from '~/components/common/overall.vue';
-import ProjectCard from '~/components/common/Project/ProjectCard.vue';
-import GroupCard from '~/components/common/Group/GroupCard.vue'
-import { useGroupStore } from '~/store/group';
-import { useDummyStore } from '~/store/dummy';
-import { useProjectStore } from '~/store/project';
+import NotFound from '@/components/common/notFound.vue';
+import OverallCard from '@/components/common/overall.vue';
+import ProjectCard from '@/components/common/Project/ProjectCard.vue';
+import GroupCard from '@/components/common/Group/GroupCard.vue'
+import { useGroupStore } from '@/store/group';
+import { useDummyStore } from '@/store/dummy';
+import { useProjectStore } from '@/store/project';
 
 definePageMeta({
   middleware: "auth"

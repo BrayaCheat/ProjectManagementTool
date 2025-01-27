@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import GroupCard from '~/components/common/Group/GroupCard.vue';
-import { useDummyStore } from '~/store/dummy';
+import GroupCard from '@/components/common/Group/GroupCard.vue';
+import { useDummyStore } from '@/store/dummy';
 
 const dummyStore = useDummyStore()
 

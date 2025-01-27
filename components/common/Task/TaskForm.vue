@@ -73,14 +73,14 @@ import {
   SheetTrigger,
   SheetTitle,
   SheetDescription
-} from '../../ui/sheet'
-import { Select, SelectTrigger, SelectContent, SelectValue, SelectItem } from '../../ui/select';
-import { Label } from '../../ui/label';
-import Header from '../Header.vue';
-import { statusList, priorityList } from '~/utils/helper.js';
+} from '@/components/ui/sheet'
+import { Select, SelectTrigger, SelectContent, SelectValue, SelectItem } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import Header from '@/components/common/Header.vue';
+import { statusList, priorityList } from '@/utils/helper.js';
 import { X } from 'lucide-vue-next';
-import TaskDateRange from './TaskDateRange.vue';
-import { Textarea } from '../../ui/textarea';
+import TaskDateRange from '@/components/common/Task/TaskDateRange.vue';
+import { Textarea } from '@/components/ui/textarea';
 
 //state
 const props = defineProps({

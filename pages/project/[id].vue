@@ -1,19 +1,10 @@
 <template>
-  <div>
-    <ProjectBoard
-      v-if="projectDetail"
-      :data="projectDetail"
-    />
-    <div v-else>
-      debug
-    </div>
-  </div>
-
+  <ProjectBoard :data="projectDetail" />
 </template>
 
 <script setup>
-import ProjectBoard from '../../components/common/Project/ProjectBoard.vue';
-import { useProjectStore } from '~/store/project';
+import ProjectBoard from '@/components/common/Project/ProjectBoard.vue';
+import { useProjectStore } from '@/store/project';
 
 //state
 const projectStore = useProjectStore()

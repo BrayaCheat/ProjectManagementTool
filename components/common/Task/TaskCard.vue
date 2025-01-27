@@ -21,9 +21,9 @@
 
 <script setup>
 import { Calendar, Clock } from 'lucide-vue-next';
-import { Card } from '../../ui/card';
-import Badge from '../Badge.vue';
-import TaskDetail from './TaskDetail.vue';
+import { Card } from '@/components/ui/card';
+import Badge from '@/components/common/Badge.vue';
+import TaskDetail from '@/components/common/Task/TaskDetail.vue';
 
 //state
 const props = defineProps({

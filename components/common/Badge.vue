@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-  import { Card } from '../ui/card';
-  import { statusColor, statusIcon } from '~/utils/helper.js';
+  import { Card } from '@/components/ui/card';
+  import { statusColor, statusIcon } from '@/utils/helper.js';
   const props = defineProps({
     data: {
       type: String,

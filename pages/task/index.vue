@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-  import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectItem, SelectLabel } from '~/components/ui/select';
-  import { useGroupStore } from '~/store/group';
+  import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectItem, SelectLabel } from '@/components/ui/select';
+  import { useGroupStore } from '@/store/group';
 
   const groupStore = useGroupStore()
 </script>

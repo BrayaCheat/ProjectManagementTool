@@ -53,11 +53,11 @@
 </template>
 
 <script setup>
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '../../ui/dialog';
-import { priorityColor, priority } from '~/utils/helper.js';
-import Badge from '../Badge.vue';
-import { Separator } from '../../ui/separator';
-import { Textarea } from '../../ui/textarea';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { priorityColor, priority } from '@/utils/helper.js';
+import Badge from '@/components/common/Badge.vue';
+import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
 import { Clock } from 'lucide-vue-next';
 
 const props = defineProps({

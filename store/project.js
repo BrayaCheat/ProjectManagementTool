@@ -10,12 +10,20 @@ export const useProjectStore = defineStore('projectStore', () => {
     }
   }
 
+  const removeFromStore = (id) => {
+    const index = projects.value.findIndex(project => project?.id === id)
+    if(index !== -1){
+      projects.value.splice(index, 1)
+    }
+  }
+
   return {
     //state
     projects,
 
     //function
-    fetchProject
+    fetchProject,
+    removeFromStore
   }
 }, {
   persist: true
