@@ -1,7 +1,7 @@
 <template>
   <div class="border-none flex flex-col flex-1 gap-3 shadow-none h-full">
     <div class="flex items-center">
-      <Header :data="projectName" class="flex-1" />
+      <Label class="flex-1 text-[20px] font-bold">{{ projectName }}</Label>
       <GroupForm :data="projectId" />
     </div>
     <ProjectTab @onTabChange="onListenEmit" />
@@ -23,9 +23,9 @@
 import GroupBoard from '@/components/common/Group/GroupBoard.vue';
 import GroupNotFound from '@/components/common/Group/GroupNotFound.vue';
 import GroupForm from '@/components/common/Group/GroupForm.vue';
-import Header from '@/components/common/Header.vue';
 import ProjectTab from '@/components/common/Project/ProjectTab.vue';
 import ProjectSetting from '@/components/common/Project/ProjectSetting.vue'
+import { Label } from '@/components/ui/label';
 
 
 //state

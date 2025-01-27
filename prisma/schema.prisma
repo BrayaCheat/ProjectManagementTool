@@ -38,6 +38,7 @@ model Task {
 model Project {
   id         String     @id @default(uuid())
   name       String
+  userId     String
   categories Category[] // One-to-many relationship with Category
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
@@ -47,6 +48,7 @@ model Category {
   id        String   @id @default(uuid()) // UUID for ID
   name      String
   color     String
+  userId    String
   tasks     Task[] // One-to-many relationship with Task
   projectId String // Foreign key to Project
   project   Project  @relation(fields: [projectId], references: [id])

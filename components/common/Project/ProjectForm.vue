@@ -14,22 +14,22 @@
           </p>
         </SheetTitle>
         <SheetDescription class="flex flex-col gap-3 py-6 px-3">
-          <Label>Project name</Label>
+          <!-- <Label>Project name</Label> -->
           <div class="relative">
             <Input
               placeholder="E-commerce platform"
               v-model.trim.lazy="projectForm.name"
               required="true"
               tabindex="-1"
-              class="text-[16px]"
+              class="text-[16px] rounded-none border-x-0 border-t-0 placeholder:text-secondary-muted focus-visible:*:z-0"
               :disabled="isLoading"
             />
             <component
-              v-if="projectForm.name.length"
+              v-if="projectForm.name.length || !isLoading"
               :is="X"
               @click="onClearForm"
               class="cursor-pointer absolute right-4 top-2.5 size-5"
-              :disabled="isLoading"
+              :class="`${isLoading && 'hidden'}`"
             />
           </div>
 
@@ -68,7 +68,7 @@ import { Input } from '@/components/ui/input';
 import { toast } from 'vue-sonner';
 import { Label } from '@/components/ui/label'
 import { onClickOutside } from '@vueuse/core';
-import { useProjectStore } from '~/store/project';
+import { useProjectStore } from '@/store/project';
 
 //state
 const projectForm = reactive({ name: '' })

@@ -6,6 +6,10 @@ export default defineEventHandler(async (event) => {
       orderBy: {
         createdAt: "desc",
       },
+      select: {
+        name: true,
+        
+      }
     });
     return {
       data: data,

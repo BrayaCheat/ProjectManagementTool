@@ -8,6 +8,16 @@
   font-style: normal;
 }
 
+input:focus {
+  outline: none !important;   /* Removes outline */
+  box-shadow: none !important; /* Removes any shadow effect */
+}
+
+input {
+  outline: none !important;   /* Ensures no outline by default */
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
