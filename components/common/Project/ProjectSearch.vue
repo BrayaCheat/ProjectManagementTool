@@ -5,6 +5,7 @@
       v-model.trim.lazy="searchQuery"
       tabindex="-1"
       class="text-[16px]"
+      
     />
     <component :is="X" v-if="searchQuery.length"
       class="size-5 absolute right-4 top-2.5 text-muted-foreground cursor-pointer" @click="onClearSearchQuery" />

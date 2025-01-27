@@ -1,9 +1,9 @@
 <template>
   <div id="Project" class="flex flex-col gap-3 h-full">
     <div class="flex items-center gap-3">
-      <ProjectSearch class="flex-1"/>
+      <!-- <ProjectSearch class="flex-1"/> -->
       <!-- <ProjectFilter /> -->
-      <ProjectForm @on-success="onListenEmit"/>
+      <ProjectForm/>
     </div>
     <div class="flex flex-1 flex-col gap-3 overflow-y-scroll">
       <ProjectCard
@@ -26,7 +26,4 @@ const projectStore = useProjectStore()
 
 //computed
 const projects = computed(() => projectStore.projects || [])
-
-//function
-const onListenEmit = async () => await projectStore.fetchProject()
 </script>

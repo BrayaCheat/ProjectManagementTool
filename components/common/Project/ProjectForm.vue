@@ -2,8 +2,8 @@
   <div>
     <Sheet :open="isSheetOpen">
       <SheetTrigger as-child>
-        <Button @click="isSheetOpen = true">
-          <component :is="Plus" />
+        <Button @click="isSheetOpen = true" variant="outline" class="text-[12px]">
+          New project
         </Button>
       </SheetTrigger>
       <SheetContent side="bottom" class="h-[75%] p-0 border-none" ref="sheet">

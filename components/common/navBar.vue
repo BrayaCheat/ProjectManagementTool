@@ -1,5 +1,5 @@
 <template>
-  <nav class="px-3 py-6 flex items-center justify-between backdrop-blur-md">
+  <nav class="px-3 pt-6 pb-3 flex items-center justify-between backdrop-blur-md">
     <div v-if="isVisible" class="flex items-center">
       <Header data="ToDo.com" />
     </div>
@@ -22,7 +22,7 @@
 <script setup>
 import NavBarSheet from '@/components/common/NavBarSheet.vue'
 import { ChevronLeft } from 'lucide-vue-next';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink } from '@/components/ui/breadcrumb';
 import Header from '@/components/common/Header.vue';
 
 //state
