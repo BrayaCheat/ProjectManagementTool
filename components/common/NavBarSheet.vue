@@ -1,5 +1,4 @@
 <template>
-  <div>
     <Sheet>
       <SheetTrigger>
         <component :is="Menu" class="size-6 text-muted-foreground" />
@@ -22,7 +21,6 @@
         </Button>
       </SheetContent>
     </Sheet>
-  </div>
 </template>
 
 <script setup>
@@ -39,19 +37,29 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useUserStore } from '@/store/user';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/lib/supabase';
+import { toast } from 'vue-sonner';
+import { useProjectStore } from '@/store/project';
 
 //state
 const isLoading = ref(false)
 const userStore = useUserStore()
+const projectStore = useProjectStore()
+const router = useRouter()
 
 //computed
 const userName = computed(() => userStore.user?.email || 'JohnDoe@gmail.com')
 
 //function
 const onSignOut = async () => {
-  isLoading.value = true
-  await supabase.auth.signOut()
-  window.location.reload()
-  isLoading.value = false
+  try {
+    isLoading.value = true
+    await supabase.auth.signOut()
+    projectStore.ClearProjectStore()
+    router.push('/login')
+    isLoading.value = false
+  } catch (error) {
+    console.log('auth error: ', error)
+    toast('', { description: error })
+  }
 }
 </script>

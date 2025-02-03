@@ -2,14 +2,25 @@ import { prisma } from "~/server/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
+    const { userId } = getQuery(event);
     const data = await prisma.project.findMany({
+      where: {
+        userId: userId,
+      },
       orderBy: {
         createdAt: "desc",
       },
       select: {
+        id: true,
         name: true,
-        
-      }
+        categories: {
+          select: {
+            id: true,
+            name: true,
+            color: true
+          },
+        },
+      },
     });
     return {
       data: data,

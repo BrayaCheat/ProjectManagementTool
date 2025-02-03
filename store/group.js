@@ -1,3 +1,5 @@
+import { useUserStore } from "./user";
+
 export const useGroupStore = defineStore(
   "groupStore",
   () => {
@@ -49,10 +51,31 @@ export const useGroupStore = defineStore(
       },
     ]);
 
+    const groups = ref([]);
+    const userStore = useUserStore();
+    const isLoading = ref(false);
+
+    const fetchGroup = async () => {
+      try {
+        isLoading.value = true;
+        const { data } = await $fetch(
+          `/api/group?userId=${userStore?.user?.id}`
+        );
+        groups.value = data;
+        isLoading.value = false;
+      } catch (error) {
+        isLoading.value = false;
+        console.log(error);
+      }
+    };
+
     return {
       //state
-      group
-    }
+      groups,
+
+      //method
+      fetchGroup
+    };
   },
   { persist: true }
 );

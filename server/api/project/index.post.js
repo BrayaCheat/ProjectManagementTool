@@ -2,7 +2,7 @@ import { prisma } from "~/server/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
-    const { name } = await readBody(event);
+    const { name, userId } = await readBody(event);
     if (!name || typeof name !== "string" || name.trim() === "") {
       return {
         message:
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
       };
     }
     const data = await prisma.project.create({
-      data: { name: name },
+      data: { name: name, userId: userId },
     });
     return {
       message: "Project created.",

@@ -33,7 +33,6 @@ const props = defineProps({
   data: {
     type: Object,
     required: true,
-    default: {}
   }
 })
 const isActiveComponent = ref('group')
@@ -42,7 +41,7 @@ const isActiveComponent = ref('group')
 const projectName = computed(() => props.data?.name || '')
 const projectId = computed(() => props.data?.id || '')
 const project = computed(() => props.data || {})
-const projectGroup = computed(() => props.data?.categories || [])
+const projectGroup = computed(() => props?.data?.categories || [])
 
 //function
 const onListenEmit = (payload) => {

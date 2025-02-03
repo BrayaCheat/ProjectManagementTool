@@ -1,82 +1,65 @@
 <template>
-  <div>
-    <Sheet :open="isSheetOpen">
-      <SheetTrigger as-child>
-        <Button @click="isSheetOpen = true" variant="outline" class="text-[12px]">
-          New project
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="bottom" class="h-[75%] p-0 border-none" ref="sheet">
-        <SheetTitle class="bg-primary text-secondary px-3 py-6 flex flex-col gap-3">
-          <Label class="text-[20px]">Create new project</Label>
-          <p class="text-muted-foreground text-[14px]/5">
-            This project aims to enhance user experience and streamline business processes with an innovative solution.
-          </p>
-        </SheetTitle>
-        <SheetDescription class="flex flex-col gap-3 py-6 px-3">
-          <!-- <Label>Project name</Label> -->
+  <Sheet>
+    <SheetTrigger as-child>
+      <Button variant="outline" class="text-sm px-4 py-2">New Project</Button>
+    </SheetTrigger>
+
+    <SheetContent side="top" class="border-none p-3 flex flex-col">
+      <SheetTitle>
+        <Header data="New Project" />
+      </SheetTitle>
+      <SheetDescription class="flex flex-col gap-3 text-[14px]">
+        <div class="flex flex-col gap-4">
           <div class="relative">
             <Input
-              placeholder="E-commerce platform"
               v-model.trim.lazy="projectForm.name"
-              required="true"
-              tabindex="-1"
-              class="text-[16px] rounded-none border-x-0 border-t-0 placeholder:text-secondary-muted focus-visible:*:z-0"
-              :disabled="isLoading"
-            />
+              placeholder="Enter project name"
+              required
+              class="border-b text-lg font-medium focus:ring-0 placeholder:text-muted-foreground"
+              :disabled="isLoading" />
             <component
-              v-if="projectForm.name.length || !isLoading"
+              v-if="projectForm.name.length && !isLoading"
               :is="X"
               @click="onClearForm"
-              class="cursor-pointer absolute right-4 top-2.5 size-5"
-              :class="`${isLoading && 'hidden'}`"
+              class="absolute right-3 top-1/2 -translate-y-1/2 size-4 cursor-pointer text-muted-foreground hover:text-foreground"
             />
           </div>
-
-          <div class="h-2">
-            <span v-if="isError" class="text-destructive">{{ isError }}</span>
-          </div>
-
-          <div class="flex flex-col gap-3 mt-3">
-            <Button
-              @click.prevent="onSubmitForm"
-              :disabled="isLoading || !projectForm.name"
-              class="flex items-center px-6"
-            >
-              <span>Save</span>
-              <component v-if="isLoading" :is="Loader2Icon" class="animate-spin size-5" />
-            </Button>
-            <Button
-              variant="none"
-              @click="isSheetOpen = false"
-              :disabled="isLoading"
-            >
-              Cancel
-            </Button>
-          </div>
-        </SheetDescription>
-      </SheetContent>
-    </Sheet>
-  </div>
+          <p v-if="isError" class="text-destructive">{{ isError }}</p>
+        </div>
+      </SheetDescription>
+      <Button
+        @click="onSubmitForm"
+        :disabled="isLoading"
+        class="flex items-center justify-center gap-2 py-2 text-base font-medium">
+        <span>Save Project</span>
+        <component v-if="isLoading" :is="Loader2Icon" class="animate-spin size-4" />
+      </Button>
+      <SheetClose as-child>
+        <Button variant="ghost" :disabled="isLoading" class="py-2 text-base">Cancel</Button>
+      </SheetClose>
+    </SheetContent>
+  </Sheet>
 </template>
 
 <script setup>
-import { Loader2Icon, Plus, X } from 'lucide-vue-next';
-import { Sheet, SheetTrigger, SheetTitle, SheetDescription, SheetContent } from '@/components/ui/sheet';
+import { Loader2Icon, X } from 'lucide-vue-next';
+import { Sheet, SheetTrigger, SheetTitle, SheetDescription, SheetContent, SheetClose } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'vue-sonner';
-import { Label } from '@/components/ui/label'
-import { onClickOutside } from '@vueuse/core';
 import { useProjectStore } from '@/store/project';
+import { useUserStore } from '@/store/user';
+import Header from '@/components/common/Header.vue'
 
 //state
-const projectForm = reactive({ name: '' })
+const projectForm = reactive({ name: '', userId: null })
 const isLoading = ref(false)
-const isSheetOpen = ref(false)
 const isError = ref(false)
-const sheet = ref(null)
 const projectStore = useProjectStore()
+const userStore = useUserStore()
+
+//computed
+const userId = computed(() => userStore?.user?.id)
 
 //function
 const onClearForm = () => {
@@ -91,6 +74,7 @@ const onSubmitForm = async () => {
     if (projectForm.name.length < 6) {
       return toast('', { description: 'Project name must be 6 characters above' })
     }
+    projectForm.userId = userId.value
     isLoading.value = true;
     const { message } = await $fetch('/api/project', {
       method: 'POST',
@@ -100,7 +84,6 @@ const onSubmitForm = async () => {
     toast('', { description: message })
     projectForm.name = ''
     isLoading.value = false;
-    isSheetOpen.value = false;
   } catch (error) {
     isLoading.value = false
     console.error(error)
@@ -119,10 +102,5 @@ watch(() => projectForm.name, (val) => {
   else {
     isError.value = ''
   }
-})
-
-//vue use
-onClickOutside(sheet, event => {
-  event?.clientY > 204.75 ? isSheetOpen.value = true : isSheetOpen.value = false
 })
 </script>

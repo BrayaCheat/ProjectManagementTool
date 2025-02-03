@@ -28,10 +28,10 @@ const props = defineProps({
   }
 })
 
-const group = computed(() => props.data || [])
-const groupName = computed(() => props.data?.name || 'Unknown Group')
-const groupId = computed(() => props.data?.id || 'Unknown Id')
-const groupColor = computed(() => props.data?.color || '#24252a')
+const group = computed(() => props?.data || [])
+const groupName = computed(() => props?.data?.name || '')
+const groupId = computed(() => props?.data?.id || '')
+const groupColor = computed(() => props?.data?.color || '')
 
 const withOpacity = (hexColor, opacity) => {
   const hex = hexColor.replace("#", "");
@@ -45,5 +45,5 @@ const withOpacity = (hexColor, opacity) => {
 
 const backgroundWithOpacity = computed(() => withOpacity(groupColor.value, 0.2));
 const gradientBackground = computed(() => `linear-gradient(160deg, ${backgroundWithOpacity.value} 1%, rgba(255, 255, 255, 1) 50%)`);
-const haveTask = computed(() => props.data.tasks.length)
+const haveTask = computed(() => props?.data?.tasks?.length || [])
 </script>

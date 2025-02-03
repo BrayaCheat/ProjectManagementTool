@@ -34,7 +34,7 @@ const props = defineProps({
 })
 
 //computed
-const projectName = computed(() => props.data?.name || '')
-const projectGroup = computed(() => props.data?.categories || [])
-const projectPath = computed(() => `/project/${props.data?.id}`)
+const projectName = computed(() => props?.data?.name || '')
+const projectGroup = computed(() => props?.data?.categories || [])
+const projectPath = computed(() => `/project/${props?.data?.id}`)
 </script>

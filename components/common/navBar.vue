@@ -1,14 +1,12 @@
 <template>
   <nav class="px-3 pt-6 pb-3 flex items-center justify-between backdrop-blur-md">
-    <div v-if="isVisible" class="flex items-center">
-      <Header data="ToDo.com" />
-    </div>
+    <Header data="ToDo.com" v-if="isVisible"/>
     <div v-else class="flex flex-1 items-center">
       <component @click="onGoBack" :is="ChevronLeft" class="size-6 cursor-pointer text-muted-foreground" />
       <Breadcrumb class="flex-1 flex items-center justify-center">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink class="uppercase truncate">
+            <BreadcrumbLink class="uppercase truncate w-[200px]">
               {{ $route.path }}
             </BreadcrumbLink>
           </BreadcrumbItem>

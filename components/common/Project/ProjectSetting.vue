@@ -100,7 +100,7 @@ const onDeleteProject = async () => {
     const { data } = await $fetch(`/api/project/${projectId.value}`, {
       method: 'DELETE'
     })
-    projectStore.removeFromStore(projectId.value)
+    projectStore.removeProject(projectId.value)
     toast('', { description: data })
     isLoading.value = false
     router.push('/project')
